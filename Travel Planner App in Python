@@ -1,0 +1,39 @@
+class TravelPlanner:
+    def __init__(self):
+        self.destinations = []
+        self.itineraries = {}
+
+    def add_destination(self, destination):
+        self.destinations.append(destination)
+        print(f"Destination '{destination}' added.")
+
+    def create_itinerary(self, user, itinerary):
+        if user not in self.itineraries:
+            self.itineraries[user] = []
+        self.itineraries[user].append(itinerary)
+        print(f"Itinerary for {user} added: {itinerary}")
+
+    def view_itineraries(self, user):
+        if user in self.itineraries:
+            print(f"Itineraries for {user}:")
+            for idx, itinerary in enumerate(self.itineraries[user], 1):
+                print(f"{idx}. {itinerary}")
+        else:
+            print(f"No itineraries found for {user}.")
+
+# Example usage
+if __name__ == "__main__":
+    planner = TravelPlanner()
+    
+    # Adding destinations
+    planner.add_destination("Paris")
+    planner.add_destination("Tokyo")
+    
+    # Creating itineraries
+    planner.create_itinerary("Alice", {"destination": "Paris", "activities": ["Eiffel Tower", "Louvre Museum"], "days": 3})
+    planner.create_itinerary("Bob", {"destination": "Tokyo", "activities": ["Shibuya Crossing", "Meiji Shrine"], "days": 5})
+    
+    # Viewing itineraries
+    planner.view_itineraries("Alice")
+    planner.view_itineraries("Bob")
+    planner.view_itineraries("Charlie")
